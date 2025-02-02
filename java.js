@@ -56,14 +56,14 @@ mineDisplay.innerHTML = minePerSecond
 let bitChecker = parseInt(localStorage.getItem('bitChecker')) || 0
 let cokeChecker = parseInt(localStorage.getItem('cokeChecker')) || 0
 
-if (bitChecker == 1) {
-    mainCoin.style.backgroundImage = "url('icons/bitCoinIcon.png')";
-    bitCoin.style.display = "none"
-}
 
 if (cokeChecker == 1) {
     mainCoin.style.backgroundImage = "url('icons/cokeIcon.webp')";
     cokeCoin.style.display = "none"
+}
+if (bitChecker == 1) {
+    mainCoin.style.backgroundImage = "url('icons/bitCoinIcon.png')";
+    bitCoin.style.display = "none"
 }
 //score
 if (score >= 1000) {
@@ -85,15 +85,15 @@ if (perClick >= 1000000) {
 if (perClick >= 1000000000) {
     perClickDisplay.innerHTML = `${(perClick - perClick % 1000000) / 1000000000}B`
 }
-//perClickPlus
+//perClickPlusDisplay
 if (perem3 >= 1000) {
-    perem3 = `${(perem3 - perem3 % 10) / 1000}K`
+    perClickPlusDisplay.innerHTML = `${(perem3 - perem3 % 10) / 1000}K`
 }
 if (perem3 >= 1000000) {
-    perem3 = `${(perem3 - perem3 % 10000) / 1000000}M`
+    perClickPlusDisplay.innerHTML = `${(perem3 - perem3 % 10000) / 1000000}M`
 }
 if (perem3 >= 1000000000) {
-    perem3 = `${(perem3 - perem3 % 10000000) / 1000000000}B`
+    perClickPlusDisplay.innerHTML = `${(perem3 - perem3 % 10000000) / 1000000000}B`
 }
 //clickUpCost
 if (clickUpCost >= 1000) {
