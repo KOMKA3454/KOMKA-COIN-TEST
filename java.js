@@ -30,11 +30,7 @@ let a = parseInt(localStorage.getItem('a')) || 6
 let b = parseInt(localStorage.getItem('b')) || 6
 
 let clickUpCost = parseInt(localStorage.getItem('clickUpCost')) || 10
-// if (clickUpCost === null) {
-//     clickUpCost = 10;  // Если счёт не сохранён, начинаем с 10
-// } else {
-//     clickUpCost = parseInt(clickUpCost);  // Преобразуем строку в число
-//}
+
 
 
 
