@@ -29,11 +29,11 @@ let score = parseInt(localStorage.getItem('score')) || 0;
 let a = parseInt(localStorage.getItem('a')) || 6
 let b = parseInt(localStorage.getItem('b')) || 6
 
-let clickUpCost = localStorage.getItem('clickUpCost');
-if (clickUpCost === null) {
-    clickUpCost = 10;  // Если счёт не сохранён, начинаем с 10
-} else {
-    clickUpCost = parseInt(clickUpCost);  // Преобразуем строку в число
+let clickUpCost = parseInt(localStorage.getItem('clickUpCost')) || 10
+// if (clickUpCost === null) {
+//     clickUpCost = 10;  // Если счёт не сохранён, начинаем с 10
+// } else {
+//     clickUpCost = parseInt(clickUpCost);  // Преобразуем строку в число
 }
 
 
@@ -52,6 +52,7 @@ coins.innerHTML = score
 clickUpgrCost.innerHTML = clickUpCost
 perClickPlusDisplay.innerHTML = `+${perem3}`
 mineDisplay.innerHTML = minePerSecond
+
 
 let bitChecker = parseInt(localStorage.getItem('bitChecker')) || 0
 let cokeChecker = parseInt(localStorage.getItem('cokeChecker')) || 0
@@ -228,13 +229,13 @@ let clickUp = () => {
             perem2 = 0
         }
         if (perem3 >= 1000) {
-            perem3 = `${(perem3 - perem3 % 10) / 1000}K`
+            perClickPlusDisplay.innerHTML = `${(perem3 - perem3 % 10) / 1000}K`
         }
         if (perem3 >= 1000000) {
-            perem3 = `${(perem3 - perem3 % 10000) / 1000000}M`
+            perClickPlusDisplay.innerHTML = `${(perem3 - perem3 % 10000) / 1000000}M`
         }
         if (perem3 >= 1000000000) {
-            perem3 = `${(perem3 - perem3 % 10000000) / 1000000000}B`
+            perClickPlusDisplay.innerHTML = `${(perem3 - perem3 % 10000000) / 1000000000}B`
         }
         
         perClick += perClickPlus
@@ -317,10 +318,10 @@ let mineUp = () => {
             mineDisplay.innerHTML = `${(minePerSecond - minePerSecond % 10) / 1000}K`
         }
         if (minePerSecond >= 1000000) {
-            clickUpgrCost.innerHTML = `${(minePerSecond - minePerSecond % 10000) / 1000000}M`
+            mineDisplay.innerHTML = `${(minePerSecond - minePerSecond % 10000) / 1000000}M`
         }
         if (minePerSecond >= 1000000000) {
-            minePerSecond.innerHTML = `${(minePerSecond - minePerSecond % 1000000) / 1000000000}B`
+            mineDisplay.innerHTML = `${(minePerSecond - minePerSecond % 1000000) / 1000000000}B`
         }
         
         if (mineUpCost >= 1000) {
@@ -375,22 +376,22 @@ let Rebirth = () => {
         score -= rebirthCost
         rebirthCounter += 1
         rebirthDisplay.innerHTML = rebirthCounter
-        localStorage.removeItem('score')
         score = 0
-        localStorage.removeItem('perClick')
+        localStorage.setItem('score', score)
         perClick = 1
-        localStorage.removeItem('perClickPlus')
+        localStorage.setItem('perClick', perClick)
         perClickPlus = 4
-        localStorage.removeItem('clickUpCost')
+        localStorage.setItem('perClickPlus', perClickPlus)
         clickUpCost = 10
-        localStorage.removeItem('komka2')
+        localStorage.setItem('clickUpCost', clickUpCost)
         komka2 = 1
-        localStorage.removeItem('perem')
+        localStorage.setItem('komka2', komka2)
         perem = 0
-        localStorage.removeItem('perem2')
+        localStorage.setItem('perem', perem)
         perem2 = 0
-        localStorage.removeItem('perem3')
+        localStorage.setItem('perem2', perem2)
         perem3 = 4
+        localStorage.setItem('perem3', perem3)
         a -= 1
         b -= 1
         localStorage.setItem("a", a)
@@ -422,8 +423,8 @@ let Rebirth = () => {
         clickUpgrCost.innerHTML = clickUpCost
         perClickPlusDisplay.innerHTML = `+${perem3}`
         coins.innerHTML = score
-        localStorage("rebirthCost", rebirthCost)
-        localStorage("rebirthCounter", rebirthCounter)
+        localStorage.setItem("rebirthCost", rebirthCost)
+        localStorage.setItem("rebirthCounter", rebirthCounter)
         //colors of buttons
         if (score >= clickUpCost) {
             clickbtn.style.background = "green"
