@@ -426,29 +426,19 @@ let Rebirth = () => {
         localStorage.setItem("rebirthCost", rebirthCost)
         localStorage.setItem("rebirthCounter", rebirthCounter)
         //colors of buttons
-        if (score >= clickUpCost) {
-            clickbtn.style.background = "green"
-        } else {
+        if (score < clickUpCost) {
             clickbtn.style.background = "rgb(80, 99, 80)"
         }
-        if (score >= rebirthCost) {
-            rebirthbtn.style.background = "green"
-        } else {
+        if (score < rebirthCost) {
             rebirthbtn.style.background = "rgb(80, 99, 80)"
         }
-        if (score >= 1000) {
-            cokebtn.style.background = "green"
-        } else {
+        if (score < 1000) {
             cokebtn.style.background = "rgb(80, 99, 80)"
-        }
-        if (score >= 1000000) {
-            bitCoinbtn.style.background = "green"
-        } else {
+        } 
+        if (score < 1000000) {
             bitCoinbtn.style.background = "rgb(80, 99, 80)"
         }
-        if (score >= mineUpCost) {
-            mineUpbtn.style.background = "green"
-        }else {
+        if (score < mineUpCost) {
             mineUpbtn.style.background = "rgb(80, 99, 80)"
         }
     } else {
